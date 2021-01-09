@@ -6,9 +6,9 @@
 ## DELIVERABLES/FEATURES OF THE APP
 - Slot Booking to get vaccinated at chosen nearby vaccination centre during the chosen slot.
 - Updation of the Vaccination Status of the app user, whether the user is:
-- Not Vaccinated 
-- Vaccination in process 
-- Vaccinated wholly
+  - Not Vaccinated 
+  - Vaccination in process 
+  - Vaccinated wholly
 ## Design
 Sketch for UI/UX (https://github.com/ayushchauhan1/hackathon-frontend/blob/master/Vaccine.sketch)
 ## Backend
