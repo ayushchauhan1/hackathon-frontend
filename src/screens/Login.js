@@ -69,7 +69,12 @@ class LoginScreen extends React.Component {
 
           <View style={styles.container}>
             <View
-              style={{ flexDirection: "row", marginTop: 100, marginLeft: 10 }}
+              style={{
+                flexDirection: "row",
+                marginTop: 100,
+                paddingLeft: 30,
+                paddingRight: 30,
+              }}
             >
               <Image
                 style={{ width: 120, height: 80 }}
@@ -86,17 +91,25 @@ class LoginScreen extends React.Component {
                 Link AADHAAR
               </Text>
             </View>
-            <TextInput
-              style={styles.input}
-              placeholder="enter aadhaar card no."
-              placeholderTextColor="#F8EDF1"
-              keyboardType="numeric"
-              editable={true}
-              onChangeText={this.handleAadharChange}
+            <View
+              style={{
+                flexDirection: "row",
+                paddingLeft: 20,
+                paddingRight: 20,
+              }}
+            >
+              <TextInput
+                style={styles.input}
+                placeholder="Enter aadhaar card no."
+                placeholderTextColor="#F8EDF1"
+                keyboardType="numeric"
+                editable={true}
+                onChangeText={this.handleAadharChange}
 
-              // onChangeText={val=>onChangeText(val)}
-              // value={value}
-            />
+                // onChangeText={val=>onChangeText(val)}
+                // value={value}
+              />
+            </View>
 
             <View style={styles.bottom}>
               <Button
@@ -131,7 +144,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: "100%",
     height: 60,
-    marginTop: 30,
+    marginTop: 20,
 
     padding: 10,
   },
@@ -140,6 +153,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     marginBottom: 36,
+    padding: 20,
     width: "100%",
   },
 });
