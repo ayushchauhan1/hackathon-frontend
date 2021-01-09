@@ -43,7 +43,7 @@ class LoginScreen extends React.Component {
 
   componentDidMount = () => {
     // axios
-    //   .get("http://127.0.0.1:8000/users/")
+    //   .get("http://10.0.2.2:8000/users/")
     //   .then((res) => {
     //     console.log(res);
     //   })
@@ -61,7 +61,7 @@ class LoginScreen extends React.Component {
   render() {
     console.log(this.props.user);
     if (this.props.user.aadhar) {
-      return <Profile />;
+      return <Profile navigation={this.props.navigation} />;
     } else {
       return (
         <Fragment>
