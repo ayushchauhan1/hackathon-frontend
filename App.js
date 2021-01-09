@@ -55,11 +55,7 @@ const styles = StyleSheet.create({
     padding:10,
 
   },
-  lower: {
-     marginTop: 5000,
-    
-    alignItems: 'center',
-  }, 
+
   bottom: {
     flex: 1,
     justifyContent: 'flex-end',
