@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View,TextInput,Image ,Button} from 'react-native';
 
 export default function App() {
+  console.log("Hello")
   return (
     <View style={styles.container}>
      
