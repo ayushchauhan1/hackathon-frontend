@@ -10,6 +10,8 @@ import {
   StatusBar,
 } from "react-native";
 import { connect } from "react-redux";
+import Profile from "./Profile";
+import Toast from "react-native-simple-toast";
 
 const mapStateToProps = ({ user, dispatch }) => ({
   dispatch,
@@ -30,10 +32,13 @@ class LoginScreen extends React.Component {
   };
   handleAuth = () => {
     let value = { aadhar: this.state.aadhar };
-    this.props.dispatch({
-      type: "user/LOGIN",
-      payload: value,
-    });
+    // this.props.dispatch({
+    //   type: "user/LOGIN",
+    //   payload: value,
+    // });
+    // return <Profile />;
+    Toast.show("Successfully Logged In");
+    this.props.navigation.navigate("Profile");
   };
 
   componentDidMount = () => {
@@ -45,19 +50,13 @@ class LoginScreen extends React.Component {
     //   .catch((err) => {
     //     console.log(err);
     //   });
-    fetch("http://localhost:8000/users", {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        console.log(responseJson);
-        this.setState({
-          data: responseJson,
-        });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    // fetch("http://127.0.0.1:8000/users", {
+    //   method: "GET",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //   },
+    // });
   };
   render() {
     return (
@@ -65,7 +64,9 @@ class LoginScreen extends React.Component {
         <StatusBar barStyle="dark-content" backgroundColor="#4267B2" />
 
         <View style={styles.container}>
-          <View style={{ flexDirection: "row" }}>
+          <View
+            style={{ flexDirection: "row", marginTop: 100, marginLeft: 10 }}
+          >
             <Image
               style={{ width: 120, height: 80 }}
               source={require("../../assets/aadhaar.png")}

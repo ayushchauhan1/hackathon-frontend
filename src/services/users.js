@@ -2,7 +2,7 @@ import axios from "axios";
 import setAuthToken from "./setAuthToken";
 import { AsyncStorage } from "react-native";
 
-_storeDataaadhar = async (token) => {
+const _storeDataaadhar = async (token) => {
   try {
     await AsyncStorage.setItem("aadhar", token);
   } catch (error) {
@@ -10,7 +10,7 @@ _storeDataaadhar = async (token) => {
     // console.log(error);
   }
 };
-_storeDatatoken = async (token) => {
+const _storeDatatoken = async (token) => {
   try {
     await AsyncStorage.setItem("token", token);
   } catch (error) {
@@ -19,7 +19,7 @@ _storeDatatoken = async (token) => {
   }
 };
 
-_retrieveData = async () => {
+const _retrieveData = async () => {
   try {
     const value = await AsyncStorage.getItem("token");
     if (value !== null) {
@@ -41,7 +41,7 @@ export async function login(contact1, password1) {
     .then((response) => {
       console.log(response);
       authorized1 = true;
-      // _storeDataaadhar(contact1);
+      _storeDataaadhar(contact1);
       // const value1 = _retrieveData();
       return true;
     })
