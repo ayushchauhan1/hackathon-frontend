@@ -32,13 +32,13 @@ class LoginScreen extends React.Component {
   };
   handleAuth = () => {
     let value = { aadhar: this.state.aadhar };
-    // this.props.dispatch({
-    //   type: "user/LOGIN",
-    //   payload: value,
-    // });
+    this.props.dispatch({
+      type: "user/LOGIN",
+      payload: value,
+    });
     // return <Profile />;
-    Toast.show("Successfully Logged In");
-    this.props.navigation.navigate("Profile");
+    // Toast.show("Successfully Logged In");
+    // this.props.navigation.navigate("Profile");
   };
 
   componentDidMount = () => {
@@ -59,53 +59,58 @@ class LoginScreen extends React.Component {
     // });
   };
   render() {
-    return (
-      <Fragment>
-        <StatusBar barStyle="dark-content" backgroundColor="#4267B2" />
+    console.log(this.props.user);
+    if (this.props.user.aadhar) {
+      return <Profile />;
+    } else {
+      return (
+        <Fragment>
+          <StatusBar barStyle="dark-content" backgroundColor="#4267B2" />
 
-        <View style={styles.container}>
-          <View
-            style={{ flexDirection: "row", marginTop: 100, marginLeft: 10 }}
-          >
-            <Image
-              style={{ width: 120, height: 80 }}
-              source={require("../../assets/aadhaar.png")}
-            />
-            <Text
-              style={{
-                fontSize: 32,
-                paddingTop: 30,
-                paddingLeft: 20,
-                color: "#49000E",
-              }}
+          <View style={styles.container}>
+            <View
+              style={{ flexDirection: "row", marginTop: 100, marginLeft: 10 }}
             >
-              Link AADHAAR
-            </Text>
-          </View>
-          <TextInput
-            style={styles.input}
-            placeholder="enter aadhaar card no."
-            placeholderTextColor="#F8EDF1"
-            keyboardType="numeric"
-            editable={true}
-            onChangeText={this.handleAadharChange}
+              <Image
+                style={{ width: 120, height: 80 }}
+                source={require("../../assets/aadhaar.png")}
+              />
+              <Text
+                style={{
+                  fontSize: 32,
+                  paddingTop: 30,
+                  paddingLeft: 20,
+                  color: "#49000E",
+                }}
+              >
+                Link AADHAAR
+              </Text>
+            </View>
+            <TextInput
+              style={styles.input}
+              placeholder="enter aadhaar card no."
+              placeholderTextColor="#F8EDF1"
+              keyboardType="numeric"
+              editable={true}
+              onChangeText={this.handleAadharChange}
 
-            // onChangeText={val=>onChangeText(val)}
-            // value={value}
-          />
-
-          <View style={styles.bottom}>
-            <Button
-              color="#4267B2"
-              title="OK"
-              onPress={() => this.handleAuth()}
+              // onChangeText={val=>onChangeText(val)}
+              // value={value}
             />
-          </View>
 
-          <StatusBar style="auto" />
-        </View>
-      </Fragment>
-    );
+            <View style={styles.bottom}>
+              <Button
+                color="#4267B2"
+                title="OK"
+                onPress={() => this.handleAuth()}
+              />
+            </View>
+
+            <StatusBar style="auto" />
+          </View>
+        </Fragment>
+      );
+    }
   }
 }
 
