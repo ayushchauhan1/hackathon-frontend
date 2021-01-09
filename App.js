@@ -1,69 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View,TextInput,Image ,Button} from 'react-native';
+import "react-native-gesture-handler";
+import React, { Component } from "react";
+import axios from "axios";
+import { AppNavigator } from "./src/Navigator";
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import createSagaMiddleware from "redux-saga";
+import sagas from "./src/redux/sagas";
+import reducers from "./src/redux/reducers";
+import thunk from "redux-thunk";
 
-export default function App() {
-  console.log("Hello")
-  return (
-    <View style={styles.container}>
-     
-      <View style={{flexDirection:'row'}}>
-        <Image style={{width: 120, height: 80}} source={require('./assets/aadhaar.png')}/>
-      <Text style={{fontSize:32,paddingTop:30,paddingLeft:20,color: "#49000E"}}>Link AADHAAR</Text>
-      </View>
-      <TextInput style={styles.input}
-      placeholder='enter aadhaar card no.'
-      placeholderTextColor="#F8EDF1"
-      keyboardType= 'numeric'
-      editable={true}
-      
-      // onChangeText={val=>onChangeText(val)}
-      // value={value}
-      />
-    
-    <View style={styles.bottom}>
-          <Button
-          color= "#4267B2"
-          
-            title="OK" />
-        </View>
-         
-      <StatusBar style="auto" />
-    </View>
-  );
+// axios.defaults.baseURL = "http://localhost:8000";
+// axios.defaults.headers.common["Authorization"] = ``;
+// axios.defaults.headers.post["Content-Type"] = "application/json";
+
+// middlewared
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [thunk, sagaMiddleware];
+
+const store = createStore(reducers(), compose(applyMiddleware(...middlewares)));
+sagaMiddleware.run(sagas);
+
+export default class App extends Component {
+  render() {
+    return (
+      <>
+        <Provider store={store}>
+          <AppNavigator />
+        </Provider>
+      </>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginTop:300,
-  marginLeft:30,
-  marginRight:30,
-  },
-  input: {
-     backgroundColor: "#4267B2",
-    opacity: 0.8,
-    borderWidth:1,
-    borderColor: "#777",
-    borderRadius:10,
-    width:"100%",
-    height:60,
-    marginTop:30,
-    
-    padding:10,
-
-  },
-
-  bottom: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    marginBottom: 36,
-    width: "100%",
-    
-    
-    
-  }
-});
+export { store };
