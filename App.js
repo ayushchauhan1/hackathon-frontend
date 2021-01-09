@@ -1,11 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View,TextInput,Image ,Button} from 'react-native';
+
+import React,{useState} from 'react';
+import { StyleSheet, Text, View,TextInput,Image ,Button,TouchableOpacity} from 'react-native';
+// import Home from './container/home';
+
 
 export default function App() {
-  return (
+  return(
+  
+ 
     <View style={styles.container}>
-     
+      
       <View style={{flexDirection:'row'}}>
         <Image style={{width: 120, height: 80}} source={require('./assets/aadhaar.png')}/>
       <Text style={{fontSize:32,paddingTop:30,paddingLeft:20,color: "#49000E"}}>Link AADHAAR</Text>
@@ -16,21 +21,20 @@ export default function App() {
       keyboardType= 'numeric'
       editable={true}
       
-      // onChangeText={val=>onChangeText(val)}
-      // value={value}
+     
       />
     
     <View style={styles.bottom}>
           <Button
-          color= "#4267B2"
+          color= "#CF0029"
           
             title="OK" />
         </View>
          
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+      <StatusBar style="auto" /> 
+      </View>
+  );}
+  
 
 const styles = StyleSheet.create({
   container: {
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
   marginRight:30,
   },
   input: {
-     backgroundColor: "#4267B2",
+     backgroundColor: "#CF0029",
     opacity: 0.8,
     borderWidth:1,
     borderColor: "#777",
@@ -65,4 +69,4 @@ const styles = StyleSheet.create({
     
     
   }
-});
+}); 
