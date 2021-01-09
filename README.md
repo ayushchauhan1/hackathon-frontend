@@ -1,6 +1,6 @@
 # Solution for covid vaccine distribution
 ## Design
-Sketch for UI/UX
+Sketch for UI/UX(https://github.com/ayushchauhan1/hackathon-frontend/blob/master/Vaccine.sketch)
 ## Backend
 CockroachDb (https://github.com/dhwaj1902/hackathon-backend), 
 MongoDb (https://github.com/dhwaj1902/hackathon-mongo)
