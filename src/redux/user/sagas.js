@@ -13,12 +13,26 @@ export function* LOGIN({ payload }) {
     },
   });
   const success = yield call(login, aadhar);
-  yield put({
-    type: "user/LOAD_CURRENT_ACCOUNT",
-  });
+  console.log(success.data);
+  // yield put({
+  //   type: "user/LOAD_CURRENT_ACCOUNT",
+  // });
   if (success) {
     // AsyncStorage.getItem("token");
     Toast.show("Successfully Logged In");
+    try {
+      yield put({
+        type: "user/SET_STATE",
+        payload: {
+          aadhar: success.data.aadhar,
+          phone: success.data.phone,
+          email: success.data.email,
+          token: success.data.token,
+          city: success.data.city,
+          gender: success.data.gender,
+        },
+      });
+    } catch (error) {}
   }
 }
 
@@ -102,11 +116,6 @@ export function* LOGOUT() {
 export default function* rootSaga() {
   yield all([
     takeEvery(actions.LOGIN, LOGIN),
-    takeEvery(actions.LOAD_CURRENT_ACCOUNT, LOAD_CURRENT_ACCOUNT),
-    takeEvery(actions.SET_ADDRESS, SET_ADDRESS),
-    takeEvery(actions.SET_CITY, SET_CITY),
-    takeEvery(actions.SET_ITEM, SET_ITEM),
     takeEvery(actions.LOGOUT, LOGOUT),
-    LOAD_CURRENT_ACCOUNT(), // run once on app load to check user auth
   ]);
 }
