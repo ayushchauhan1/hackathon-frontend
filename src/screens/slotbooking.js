@@ -53,7 +53,9 @@ export default function slotBooking() {
         Near By vacination centers
       </Text>
       <View style={{ flexDirection: "row" }}>
-        <Text style={{ fontSize: 24, margin: 20 }}>Date </Text>
+        <Text style={{ fontSize: 16, marginTop: 20, marginLeft: 35 }}>
+          02/04/21{" "}
+        </Text>
         <Text
           style={{
             fontSize: 24,
@@ -113,7 +115,7 @@ export default function slotBooking() {
         >
           NO{" "}
         </Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button2}>
           <Text style={{ fontWeight: "bold", color: "white", fontSize: 20 }}>
             BOOK
           </Text>
@@ -183,6 +185,14 @@ const styles = StyleSheet.create({
     width: 80,
     height: 30,
     backgroundColor: "green",
+    alignItems: "center",
+    borderRadius: 10,
+    margin: 20,
+  },
+  button2: {
+    width: 80,
+    height: 30,
+    backgroundColor: "grey",
     alignItems: "center",
     borderRadius: 10,
     margin: 20,
