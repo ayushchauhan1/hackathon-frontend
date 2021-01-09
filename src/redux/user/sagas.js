@@ -29,6 +29,7 @@ export function* LOGIN({ payload }) {
           email: success.data.email,
           token: success.data.token,
           city: success.data.city,
+          name: success.data.name,
           gender: success.data.gender,
         },
       });
