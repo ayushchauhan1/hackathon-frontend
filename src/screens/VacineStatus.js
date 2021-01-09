@@ -3,16 +3,18 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Image, Button } from "react-native";
 
 export default function App() {
-  const [secbook1, changeit1] = useState("Not Vacinated");
-  const [secbook2, changeit2] = useState("Not Vacinated");
+  const [secbook1, changeit1] = useState("Not Vaccinated");
+  const [secbook2, changeit2] = useState("Not Vaccinated");
   const [secbook3, changeit3] = useState(false);
   const [secbook4, changeit4] = useState(false);
   changeits1 = () => {
-    changeit1("Vacinated");
+    alert("Final Face Vaccination Completed");
+    changeit1("Vaccinated");
     changeit3(true);
   };
   changeits2 = () => {
-    changeit2("Vacinated");
+    alert("Initial Face Vaccination Completed");
+    changeit2("Vaccinated");
     changeit4(true);
   };
   return (
@@ -56,7 +58,7 @@ export default function App() {
             fontWeight: "bold",
           }}
         >
-          {secbook3 && secbook4 === true ? "Vacinated" : "Not Vacinated"}
+          {secbook3 && secbook4 === true ? "Vaccinated" : "Not Vaccinated"}
         </Text>
       </View>
       <View
